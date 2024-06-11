@@ -42,6 +42,11 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Remove unwanted files
+        run: |
+          find ./dist -type l -exec rm -f {} +
+          find ./dist -name '*.map' -exec rm -f {} +
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
